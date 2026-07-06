@@ -24,32 +24,6 @@ graph LR
     style F fill:#e0f2f1
 ```
 
-## Data Flow Pipeline
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant CLI
-    participant InputHandler
-    participant Analyzer
-    participant PromptBuilder
-    participant LLMClient
-    participant Reporter
-    
-    User->>CLI: $ python -m ai_reviewer filepath.py
-    CLI->>InputHandler: read_file(filepath)
-    InputHandler-->>CLI: code_content
-    CLI->>Analyzer: analyze_code(code_content)
-    Analyzer-->>CLI: analysis_data
-    CLI->>PromptBuilder: build_prompt(code, analysis)
-    PromptBuilder-->>CLI: formatted_prompt
-    CLI->>LLMClient: get_ai_review(prompt)
-    LLMClient-->>CLI: raw_ai_response
-    CLI->>Reporter: format_report(response)
-    Reporter-->>CLI: final_report
-    CLI-->>User: Display Report
-```
-
 ## Module Descriptions
 
 ### 1. **CLI Entry Point** (`cli.py`)
